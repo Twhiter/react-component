@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-import {Login} from "./Login";
+import {Button} from "./lib/component/Button";
 
 ReactDOM.render(
   <React.StrictMode>
-      <Login/>
+      <Button type={"default"}>click me</Button>
+      <Button type={"primary"}>click me</Button>
+      <Button type={"success"}>click me</Button>
+      <Button type={"danger"}>click me</Button>
+      <Button type={"warning"}>click me</Button>
+      <Button type={"text"}>click me</Button>
+      <Button type={"link"}>click me</Button>
   </React.StrictMode>,
   document.getElementById('root')
 );
