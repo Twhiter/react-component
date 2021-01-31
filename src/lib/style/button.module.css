@@ -36,7 +36,6 @@
     text-decoration: none;
     vertical-align: middle;
     cursor: pointer;
-    user-select: none;
     background-color: var(--default);
     border: 1px solid #D9D9D9;
 }
@@ -64,11 +63,14 @@
     color: white;
 }
 
+
 .btnDanger {
     composes: baseButtonType;
     background-color: var(--danger);
     color: white;
 }
+
+
 
 .btnWarning {
     composes: baseButtonType;
@@ -95,6 +97,7 @@
 .btnText {
     composes: baseButtonType;
     border-color: transparent;
+    outline: none;
 }
 
 /*.btnText:hover, .btnText:focus, .btnText:active {*/
@@ -105,6 +108,7 @@
 .btnLink {
     composes: baseButtonType;
     color: var(--link);
+    outline: none;
 }
 
 
