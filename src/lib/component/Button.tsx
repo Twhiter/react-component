@@ -1,7 +1,7 @@
 import React from "react";
 import {Component, MouseEventHandler} from "react";
 import {BasePropsInterface} from "../BaseTool";
-import style from '../style/button.module.css'
+import style from '../style/button.module.styl'
 
 
 interface ButtonProps extends BasePropsInterface{
