@@ -1,17 +1,42 @@
 @import "color.module";
 
 
+@mixin baseButtonType {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: $default;
+  border: 1px solid #D9D9D9;
+  outline: none;
 
-:root{
-  --success: #198754;
-  --danger:#dc3545;
-  --warning:#ffc107;
-  --default:#ffffff;
-  --primary:#0d6efd;
-  --link:#1890ff
-
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
 }
 
+@mixin button-prop($normal,$hover,$activated,$font-color:white) {
+  color: $font-color;
+  background-color: $normal;
+  border-color: $normal;
+  &:focus, &:hover {
+    background-color: $hover;
+    border-color: $hover;
+  }
+  &:active {
+    background-color: $activated;
+    border-color: $activated;
+  }
+  &[disabled]:hover {
+    background-color: $normal;
+    border-color: $normal;
+  }
+}
 
 
 .small {
@@ -33,30 +58,6 @@
   border-radius: 0.3rem;
 }
 
-.baseButtonType {
-  display: inline-block;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-  cursor: pointer;
-  background-color: var(--default);
-  border: 1px solid #D9D9D9;
-}
-
-
-.baseButtonType:disabled {
-  cursor: not-allowed;
-  opacity: 0.65;
-}
-
-.baseButtonType[disabled]:hover {
-  color: unset;
-  border-color: unset;
-}
-
 
 .circle {
   border-radius: 50%;
@@ -64,57 +65,85 @@
 
 
 .btnSuccess {
-  composes: baseButtonType;
-  background-color: var(--success);
-  color: white;
+  @include baseButtonType;
+  @include button-prop($success, $success-focus, $success-active);
 }
 
 
 .btnDanger {
-  composes: baseButtonType;
-  background-color: var(--danger);
-  color: white;
+  @include baseButtonType;
+  @include button-prop($danger, $danger-focus, $danger-active);
 }
 
 
 
 .btnWarning {
-  composes: baseButtonType;
-  background-color: var(--warning);
-  color: white;
+  @include baseButtonType;
+  @include button-prop($warning, $warning-focus, $warning-active);
 }
 
 .btnPrimary {
-  composes: baseButtonType;
-  background-color: var(--primary);
-  color: white;
+  @include baseButtonType;
+  @include button-prop($primary, $primary-focus, $primary-active);
 }
 
 .btnDefault {
-  composes: baseButtonType;
-  outline: none;
-}
 
-.btnDefault:hover, .btnDefault:focus, .btnDefault:active {
-  color: #40a9ff;
-  border-color: #40a9ff;
+  @include baseButtonType;
+
+  &:focus, &:hover, &:active {
+    color: #40a9ff;
+    border-color: #40a9ff;
+  }
+
+  &:focus, &:hover {
+    background-color: $default-focus;
+  }
+
+  &:active {
+    background-color: $default-active;
+  }
+
+  &[disabled]:hover {
+    color: black;
+    border-color: gray;
+    background-color: white;
+  }
+
+  color: black;
+  background-color: white;
+  border-color: gray;
 }
 
 .btnText {
-  composes: baseButtonType;
-  border-color: transparent;
-  outline: none;
+  @include baseButtonType;
+  background-color: transparent;
+  border: none;
+
+  &:hover, &:focus {
+    background-color: #eeeeee;
+  }
+
+  &:active {
+    background-color: #fcfafa;
+  }
+
+  &[disabled]:hover {
+    background-color: transparent;
+  }
+
 }
 
-/*.btnText:hover, .btnText:focus, .btnText:active {*/
-/*    color: #ffffff;*/
-/*    border-color: transparent;*/
-/*}*/
-
 .btnLink {
-  composes: baseButtonType;
-  color: var(--link);
-  outline: none;
+  @include baseButtonType;
+  background-color: transparent;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+
+  &:active {
+    color: #FF1F1F;
+  }
 }
 
 

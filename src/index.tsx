@@ -3,16 +3,14 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import {Button} from "./lib/component/Button";
 
+
+
+
 ReactDOM.render(
+
+
   <React.StrictMode>
-      <Button type={"default"} onClick={event => console.log('123')}>click me</Button>
-      <Button type={"primary"}>click me</Button>
-      <Button type={"success"}>click me</Button>
-      <Button type={"danger"}>click me</Button>
-      <Button type={"warning"}>click me</Button>
-      <Button type={"text"}>click me</Button>
-      <Button type={"link"}>click me</Button>
-        <button className={"bt"}>click me</button>
+    <Button type={"success"}>click me</Button>
   </React.StrictMode>,
   document.getElementById('root')
 );
