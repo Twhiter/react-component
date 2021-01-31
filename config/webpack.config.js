@@ -60,9 +60,6 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
-const stylusRegex = /\.styl|stylus$/;
-
-const stylusModuleRegex = /\.module\.styl|stylus$/;
 
 const hasJsxRuntime = (() => {
   if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
@@ -536,37 +533,7 @@ module.exports = function (webpackEnv) {
                   'sass-loader'
               ),
             },
-            // stylus 配置文件
 
-            {
-              test: stylusRegex,
-              exclude: stylusModuleRegex,
-              use: getStyleLoaders({
-                    importLoaders: 2,
-                    sourceMap: isEnvProduction
-                        ? shouldUseSourceMap
-                        : isEnvDevelopment,
-                  },
-                  'stylus-loader'
-              ),
-              sideEffects: true,
-
-            },
-
-            {
-              test: stylusModuleRegex,
-              use: getStyleLoaders({
-                    importLoaders: 2,
-                    sourceMap: isEnvProduction
-                        ? shouldUseSourceMap
-                        : isEnvDevelopment,
-                    modules: {
-                      getLocalIdent: getCSSModuleLocalIdent,
-                    },
-                  },
-                  'stylus-loader'
-              ),
-            },
 
 
             // "file" loader makes sure those assets get served by WebpackDevServer.
