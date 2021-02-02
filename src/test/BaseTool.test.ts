@@ -7,16 +7,20 @@ test('getCSSPropertiesFromProps', () => {
     let propsToCSSName = {
         direction: 'flexDirection',
         wrap: 'wrap',
+        colors:['backgroundColor','color'],
+        test:[]
     }
 
     let props = {
         name: '123',
         direction: 'row',
-        wrap: 'nowrap'
+        wrap: 'nowrap',
+        colors: '123'
     }
     console.log(getCSSPropertiesFromProps(propsToCSSName, props));
 
-    expect(getCSSPropertiesFromProps(propsToCSSName, props)).toStrictEqual({flexDirection: 'row', wrap: 'nowrap'})
+    expect(getCSSPropertiesFromProps(propsToCSSName, props)).toStrictEqual({
+        flexDirection: 'row', wrap: 'nowrap',backgroundColor:'123',color:'123'})
 })
 
 test('mergeCSSProperties',() => {

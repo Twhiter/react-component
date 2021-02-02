@@ -10,7 +10,8 @@ ReactDOM.render(
 
 
   <React.StrictMode>
-    <Button type={"success"}>click me</Button>
+
+
   </React.StrictMode>,
   document.getElementById('root')
 );

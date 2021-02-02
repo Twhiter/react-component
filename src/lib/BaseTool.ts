@@ -9,7 +9,7 @@ export interface BasePropsInterface {
 /**
  *
  * @param one
- * @param other
+ * @param base
  *
  * 将one和other的属性取并集，如果存在相同属性，用other中的属性的值覆盖
  *
@@ -37,11 +37,11 @@ export interface BasePropsInterface {
  *
  *
  */
-export function mergeCSSProperties(one: CSSProperties, other: CSSProperties): CSSProperties {
+export function mergeCSSProperties(one: CSSProperties, base: CSSProperties): CSSProperties {
 
     let result = deepCopy(one);
-    for (const cssProperty in other)
-        result[cssProperty] = other[cssProperty]
+    for (const cssProperty in base)
+        result[cssProperty] = base[cssProperty]
 
     return result;
 }
@@ -49,7 +49,7 @@ export function mergeCSSProperties(one: CSSProperties, other: CSSProperties): CS
 
 /**
  *
- * @param propsToCSSName 属性与CSSName 对应的哈希表
+ * @param propsToCSSNames 属性与CSSName 对应的哈希表
  * @param props 属性
  * 根据propsToCSSName 在props提取出css属性,并返回
  *
@@ -78,12 +78,21 @@ export function mergeCSSProperties(one: CSSProperties, other: CSSProperties): CS
  *
  *
  */
-export function getCSSPropertiesFromProps(propsToCSSName: { [key: string]: string }, props): CSSProperties {
+export function getCSSPropertiesFromProps(propsToCSSNames: Record<string, string | string[]>, props): CSSProperties {
 
     let cssProperties: CSSProperties = {}
-    for (const prop in propsToCSSName)
-        if (props.hasOwnProperty(prop))
-            cssProperties[propsToCSSName[prop]] = props[prop]
+    for (const prop in propsToCSSNames)
+        if (props.hasOwnProperty(prop)) {
+
+            let cssNames = propsToCSSNames[prop];
+            let value = props[prop];
+
+            if (typeof cssNames === 'string')
+                cssProperties[cssNames] = value;
+            else
+                cssNames.forEach(cssName => cssProperties[cssName] = value)
+
+        }
 
     return cssProperties;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import {Component, MouseEventHandler} from "react";
 import {BasePropsInterface} from "../BaseTool";
 import style from '../style/button.module.scss';
+import {Loading} from "./Loading";
 
 interface ButtonProps extends BasePropsInterface{
 
@@ -53,14 +54,17 @@ export class Button extends Component<ButtonProps>{
 
         className = className.trim();
 
+
         return (
             <button
                 onClick={this.props.onClick}
                 style={this.props.style}
-                disabled={this.props.disabled}
+                disabled={this.props.disabled || this.props.loading}
                 type={this.props.btnType}
                 className={className}
             >
+                {this.props.loading?<Loading size={this.props.size} className={style.loading} style={{marginRight:'0.5rem'}}/>:null}
+
                 {this.props.children}
             </button>
         )
