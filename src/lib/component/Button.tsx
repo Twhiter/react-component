@@ -1,4 +1,4 @@
-import React from "react";
+import React, {LegacyRef} from "react";
 import {Component, MouseEventHandler} from "react";
 import {BasePropsInterface} from "../BaseTool";
 import style from '../style/button.module.scss';
@@ -12,7 +12,8 @@ interface ButtonProps extends BasePropsInterface{
     disabled?:boolean
     loading?:boolean
     shape?:"circle"|"round"
-    btnType?:'submit' | 'reset' | 'button';
+    btnType?:'submit' | 'reset' | 'button'
+    buttonRef:LegacyRef<HTMLButtonElement>
 }
 
 export class Button extends Component<ButtonProps>{
@@ -32,7 +33,8 @@ export class Button extends Component<ButtonProps>{
         style:{},
         className:'',
         btnType:'button',
-        shape:'round'
+        shape:'round',
+        buttonRef:btn => {}
 
     }
 
@@ -62,6 +64,7 @@ export class Button extends Component<ButtonProps>{
                 disabled={this.props.disabled || this.props.loading}
                 type={this.props.btnType}
                 className={className}
+                ref={this.props.buttonRef}
             >
                 {this.props.loading?<Loading size={this.props.size} className={style.loading} style={{marginRight:'0.5rem'}}/>:null}
 

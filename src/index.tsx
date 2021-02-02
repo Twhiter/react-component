@@ -10,7 +10,7 @@ ReactDOM.render(
 
 
   <React.StrictMode>
-
+      <Button loading size={"small"} type={"link"}>click me</Button>
 
   </React.StrictMode>,
   document.getElementById('root')
