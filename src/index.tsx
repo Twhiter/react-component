@@ -8,7 +8,7 @@ ReactDOM.render(
 
 
   <React.StrictMode>
-      <Input prefix={"帐号"} name={"123"} suffix={"密码"} size={"small"} type={"danger"}/>
+      <Input prefix={"帐号"} name={"123"} suffix={"密码"} size={"small"} type={"warning"}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
