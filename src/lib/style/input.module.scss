@@ -1,0 +1,128 @@
+@import "color.module";
+
+
+.componentWrapper {
+
+  display: flex;
+  border: 1px solid $default-input-border;
+  outline: none;
+  transition: all 0.5s;
+  border-radius: 4px;
+  padding: 4px 11px;
+  width: fit-content;
+
+  div {
+    font-size: inherit;
+    span {
+      font-size: inherit;
+    }
+  }
+}
+
+
+.block {
+  width: 100%;
+}
+
+.prefix {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-right: 5px;
+  font-size: inherit;
+  white-space: nowrap;
+  height: 100%;
+}
+
+.suffix {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-left: 5px;
+  font-size: inherit;
+  white-space: nowrap;
+  height: 100%;
+}
+
+.inputWrapper {
+  flex: 20;
+  input {
+    outline: none;
+    border: none;
+    line-height: 1.5715;
+    font-size: inherit;
+    width: 100%;
+  }
+}
+
+.small {
+  font-size: 0.875rem;
+}
+
+.medium {
+  font-size: 1rem;
+}
+
+.large {
+  font-size: 1.25rem;
+}
+
+
+@mixin hoverAndFocus($hoverColor,$focusColor) {
+
+  &:hover {
+    border-color: $hoverColor;
+  }
+
+  &:focus-within {
+    border-color: $focusColor;
+    outline: 0;
+  }
+}
+
+.inputDefault {
+  @include hoverAndFocus(#0b5ed7,#0b5ed7)
+}
+
+.inputSuccess {
+  @include hoverAndFocus($success-focus,$success-active);
+  border-color: $success;
+
+}
+
+.inputDanger {
+  @include hoverAndFocus($danger-focus,$danger-active);
+  border-color: $danger;
+}
+
+.inputWarning {
+  @include hoverAndFocus($warning-focus,$warning-active);
+  border-color: $warning;
+}
+
+.inputPrimary {
+  @include hoverAndFocus($primary-focus,$primary-active);
+  border-color: $primary;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

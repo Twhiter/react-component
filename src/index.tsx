@@ -1,17 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-import {Button} from "./lib/component/Button";
-
-
+import {Input} from "./lib/component/Input";
 
 
 ReactDOM.render(
 
 
   <React.StrictMode>
-      <Button loading size={"small"} type={"link"}>click me</Button>
-
+      <Input prefix={"帐号"} name={"123"} suffix={"密码"} size={"small"} type={"danger"}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

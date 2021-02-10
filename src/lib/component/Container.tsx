@@ -1,6 +1,8 @@
 import React, {CSSProperties, FC} from "react";
 import {BasePropsInterface, getCSSPropertiesFromProps, mergeCSSProperties} from "../BaseTool";
 import style from "../style/container.module.css"
+import {Property} from "csstype";
+import {deepCopy} from "../DeepCopy";
 
 
 export const Container: FC<BasePropsInterface> = (props) => {
@@ -94,12 +96,37 @@ export const GridContainer: FC<GridContainerProps> = (props) => {
 }
 
 
-export const FlexItem: FC<BasePropsInterface> = (props) => {
-    let className = style.flexItem + " " + (props.className ? props.className : '')
-    let _style = (props.style?props.style:{})
+
+interface FlexItemProps extends BasePropsInterface{
+    flexShrink?:Property.FlexShrink
+    flexGrow?:Property.FlexGrow
+    flexBasis?:Property.FlexBasis<string & {}>
+}
+
+const propsToCSSForFlexItem:Record<string, string> = {
+    "flexShrink":"flexShrink",
+    "flexGrow":"flexGrow",
+    "flexBasis":"flexBasis"
+
+}
+
+export const FlexItem: FC<FlexItemProps> = (props) => {
+    let className = (style.flexItem  + props.className).trim();
+    let _style = getCSSPropertiesFromProps(propsToCSSForFlexItem,props)
+
+    _style = mergeCSSProperties(props.style,_style);
+
     return (
         <div className={className} style={_style}>
             {props.children}
         </div>
     )
+}
+
+FlexItem.defaultProps = {
+    flexShrink:"initial",
+    flexGrow:"initial",
+    flexBasis:"initial",
+    style:{},
+    className:''
 }

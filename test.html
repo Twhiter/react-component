@@ -1,31 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>Spin</title>
+  <meta charset="UTF-8">
   <style>
-    .spin {
-      width: 100px;
-      height: 100px;
-      border: 3px solid #D0D3D4;
-      border-top-color: #2398e7;
-      border-radius: 50%;
-      animation: spin 1.2s ease-in-out infinite;
+
+
+    .input {
+
+      display: flex;
+      border: 1px solid #d9d9d9;
+      outline: none;
+      transition: all 1s;
+      border-radius: 4px;
+      padding: 4px 11px;
+      font-size: 1rem;
     }
 
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
+    .input:hover {
+      border-color: #0b5ed7;
     }
+
+    .input:focus-within {
+      border-color: #0b5ed7;
+      outline: 0;
+    }
+
+    input {
+      outline: none;
+      border: none;
+      line-height: 1.5715;
+      font-size: inherit;
+    }
+
+    .prefix {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: left;
+      margin-right: 5px;
+      font-size: inherit;
+    }
+
+    .suffix {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: right;
+      margin-left: 5px;
+      font-size: inherit;
+    }
+
+    .mid {
+      flex: 30;
+    }
+
+    span {
+      font-size: inherit;
+    }
+
+
+
+
   </style>
 </head>
 <body>
-<div class="spin"></div>
+  <div class="input" style="width: fit-content" id="qwe">
+    <div class="prefix">
+      <span>http://www.</span>
+    </div>
+    <div class="mid">
+      <input style="width: 100%" id="in"/>
+    </div>
+    <div class="suffix">
+      <span>.com</span>
+    </div>
+</div>
+
+<textarea></textarea>
 </body>
+
 </html>
 

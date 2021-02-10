@@ -44,7 +44,7 @@
   font-size: 0.875rem;
   border-radius: 0.2rem;
   .loading {
-    padding: 0.25rem;
+    padding: 0.1rem;
   }
 }
 
@@ -54,7 +54,7 @@
   font-size: 1rem;
   border-radius: 0.25rem;
   .loading {
-    padding: 0.25rem;
+    padding: 0.15rem;
   }
 }
 
@@ -63,7 +63,7 @@
   font-size: 1.25rem;
   border-radius: 0.3rem;
   .loading {
-    padding: 0.25rem;
+    padding: 0.2rem;
   }
 }
 
@@ -153,6 +153,11 @@
   &:active {
     color: #FF1F1F;
   }
+}
+
+.block {
+  display: block;
+  width: 100%;
 }
 
 

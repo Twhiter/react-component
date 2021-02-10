@@ -14,6 +14,7 @@ interface ButtonProps extends BasePropsInterface{
     shape?:"circle"|"round"
     btnType?:'submit' | 'reset' | 'button'
     buttonRef:LegacyRef<HTMLButtonElement>
+    block:boolean
 }
 
 export class Button extends Component<ButtonProps>{
@@ -34,7 +35,8 @@ export class Button extends Component<ButtonProps>{
         className:'',
         btnType:'button',
         shape:'round',
-        buttonRef:btn => {}
+        buttonRef:btn => {},
+        block:false
 
     }
 
@@ -50,6 +52,10 @@ export class Button extends Component<ButtonProps>{
         //拼接shape对应的css class
         if (this.props.shape !== 'round')
             className += " " + style[this.props.shape];
+
+        //拼接block
+        if (this.props.block)
+            className += " " + style.block;
 
         //最后拼接className
         className += " " + this.props.className;
